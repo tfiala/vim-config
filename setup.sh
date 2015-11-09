@@ -23,6 +23,17 @@ cp -f "$SCRIPT_DIR/has.vim" "$HOME/.vim/autoload/"
 # Create symbolic link from $HOME/.vimrc to the .vimrc in this dir.
 ln -s "$SCRIPT_DIR/vimrc" "$HOME/.vimrc"
 
+# Install the Powerline fonts if they don't exist.
+POWERLINE_SRC_DIR="$HOME/src/powerline-fonts"
+if [ ! -d "$POWERLINE_SRC_DIR" ]; then
+    mkdir -p "$HOME/src"
+    pushd "$HOME/src"
+    git clone https://github.com/powerline/fonts.git powerline-fonts
+    cd fonts
+    ./install.sh
+    popd
+fi
+
 # Install Vundle plugins
 vim +VundleInstall +qall
 
