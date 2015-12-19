@@ -25,7 +25,7 @@ Plugin 'wincent/command-t'
 Plugin 'guns/vim-clojure-static'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-fireplace'
-Plugin 'vim-scripts/paredit.vim'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
 
 " All of your Plugins must be added before the following line
@@ -74,25 +74,6 @@ set hlsearch    " highlight search term
 
 " Use "indent" program for code indenting.
 set equalprg=indent
-
-" VimClojure support
-" let vimclojure#WantNailgun = 1
-" let vimclojure#NailgunClient = "/Users/tfiala/tools/nailgun-2.2.0/ng"
-" let g:vimclojure#ParenRainbow = 1
-
-" From daveray/vimclojure-easy
-" Here's the vimclojure stuff. You'll need to adjust the NailgunClient
-" setting if you're on windows or have other problems.
-let vimclojure#FuzzyIndent=1
-let vimclojure#HighlightBuiltins=1
-let vimclojure#HighlightContrib=1
-let vimclojure#DynamicHighlighting=1
-let vimclojure#ParenRainbow=1
-let vimclojure#WantNailgun = 1
-let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
-
-" Paredit
-let g:paredit_mode = 1
 
 " NETRW SSH settings
 let g:netrw_silent = 1
