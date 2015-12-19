@@ -1,10 +1,20 @@
-if !has("gui_running")
-  " Enable 256-color mode
-  set t_Co=256
-endif
-
-" Vundle setup {{{
+" Preliminaries {{{
+" Always enable vim additions, vi compatibility unneeded.
 set nocompatible
+
+" Ignore extra files.
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Ensure we re-read the file if its in the buffer and has been modified
+" outside of vim.
+set autoread
+
+" Disable long message in startup screen.
+set shortmess+=I
+" }}}
+" Vundle setup {{{
 filetype off
 
 " Set the runtime path to include Vundle and initialize
@@ -83,6 +93,10 @@ let g:netrw_silent = 1
 map <F2> <Esc>:%!xmllint --format -<CR>
 
 " Visual-related {{{
+if !has("gui_running")
+  " Enable 256-color mode
+  set t_Co=256
+endif
 
 " Color Scheme {{{
 " setup the colorscheme
