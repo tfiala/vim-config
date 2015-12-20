@@ -26,8 +26,9 @@ Plugin 'gmarik/Vundle.vim'
 " General Plugins {{{
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
 Plugin 'wincent/command-t'
 " }}}
 
