@@ -37,3 +37,25 @@ fi
 # Install Vundle plugins
 vim +VundleInstall +qall
 
+#
+# Install tmux and the tmux plugin manager
+#
+
+# Backup and remove any .tmux directory
+if [ -d "$HOME/.tmux" ]; then
+    mv -f "$HOME/.tmux" "$HOME/.tmux.bak/"
+fi
+
+# Install the tmux plugin manager
+mkdir -p "$HOME/.tmux/plugins"
+git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+
+# Setup the .tmux.conf link
+if [ -f "$HOME/.tmux.conf" ]; then
+    cp "$HOME/.tmux.conf" "$HOME/.tmux.conf.bak"
+    rm "$HOME/.tmux.conf"
+fi
+
+# link ~/.tmux.conf to our repo one.
+ln -s "$SCRIPT_DIR/tmux.conf" "$HOME/.tmux.conf"
+
