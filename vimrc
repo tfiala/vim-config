@@ -180,6 +180,10 @@ let g:syntastic_objc_checkers = ['oclint', 'gcc']
 " Objective-C++ Setup {{{
 let g:syntastic_objcpp_checkers = ['oclint', 'gcc']
 " }}}
+" Perl Setup {{{
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
+" }}}
 " }}}
 
 " command-t setup {{{
