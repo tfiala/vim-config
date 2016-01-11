@@ -124,7 +124,8 @@ set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,nbsp:_
 
 " Set font {{{
 if has("gui_running")
-  set guifont=Source\ Code\ Pro\ for\ Powerline:h14'
+  " set guifont=Source\ Code\ Pro\ for\ Powerline:h14'
+  set guifont=Menlo\ for\ Powerline:h14'
 endif
 
 " Setup powerline font dictionary.
