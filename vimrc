@@ -30,6 +30,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'wincent/command-t'
+Plugin 'xolox/vim-notes'
+Plugin 'xolox/vim-misc'
 " }}}
 
 " Clojure-related plugins {{{
@@ -207,4 +209,9 @@ au Filetype perl nmap <F2> :call DoTidy()<CR>
 
 "shortcut for visual mode to run on the the current visual selection"
 au Filetype perl vmap <F2> :Tidy<CR>
+" }}}
+
+" vim-notes setup
+" {{{
+let g:notes_directories = ['~/notes/home-notes', '~/Dropbox/shared-notes']
 " }}}
