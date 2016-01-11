@@ -29,6 +29,7 @@ Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/utl.vim'
 Plugin 'wincent/command-t'
 Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
@@ -215,4 +216,10 @@ au Filetype perl vmap <F2> :Tidy<CR>
 " vim-notes setup
 " {{{
 let g:notes_directories = ['~/notes/home-notes', '~/Dropbox/shared-notes']
+" }}}
+
+" utl setup
+" {{{
+    " setup the web browser
+	let g:utl_cfg_hdl_scm_http_system = "silent !open -a Safari '%u'"
 " }}}
