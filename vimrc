@@ -30,9 +30,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/utl.vim'
+Plugin 'vim-voom/VOoM'
 Plugin 'wincent/command-t'
-Plugin 'xolox/vim-notes'
 Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 " }}}
 
 " Clojure-related plugins {{{
