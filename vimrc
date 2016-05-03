@@ -127,8 +127,7 @@ set listchars=eol:$,tab:>-,trail:.,extends:>,precedes:<,nbsp:_
 
 " Set font {{{
 if has("gui_running")
-  " set guifont=Source\ Code\ Pro\ for\ Powerline:h14'
-  set guifont=Menlo\ for\ Powerline:h14'
+  set guifont=Source\ Code\ Pro\ Medium:h14
 endif
 
 " Setup powerline font dictionary.
@@ -224,4 +223,13 @@ let g:notes_directories = ['~/notes/home-notes', '~/Dropbox/shared-notes']
 " {{{
     " setup the web browser
 	let g:utl_cfg_hdl_scm_http_system = "silent !open -a Safari '%u'"
+" }}}
+
+" Setup arrows as shortcuts for moving fast through vimgrep/helpgrep-
+" style output (cnext/cprev/cnfile/cpfile).
+" {{{
+nmap <silent> <RIGHT>         :cnext<CR>
+nmap <silent> <RIGHT><RIGHT>  :cnfile<CR>
+nmap <silent> <LEFT>          :cprev<CR>
+nmap <silent> <LEFT><LEFT>    :cpfile<CR>
 " }}}
