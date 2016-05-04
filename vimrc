@@ -40,6 +40,7 @@ Plugin 'xolox/vim-notes'
 " Clojure-related plugins {{{
 Plugin 'guns/vim-clojure-static'
 Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'kovisoft/paredit'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
