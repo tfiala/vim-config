@@ -73,7 +73,6 @@ set autowrite	" Automatically save before commands like :next and :make
 set hidden      " Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes) in terminals
 set nowrap      " don't wrap lines
-set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set autoindent  " always turn on autoindenting
 set copyindent  " copy the previous indentation on autoindenting
 set number      " always show line numbers
@@ -87,6 +86,12 @@ set smarttab    " insert tobs on start of a line according to shiftwidth, not ta
 
 set hlsearch    " highlight search term
 
+" Insert-mode deletion: allow deleting more than we inserted.
+" Otherwise, we get classic vi behavior where we cannot
+" delete any more than we inserted since we started insert mode.
+" {{{
+set backspace=indent,eol,start
+" }}}
 
 " Use "indent" program for code indenting.
 set equalprg=indent
@@ -225,11 +230,31 @@ let g:notes_directories = ['~/notes/home-notes', '~/Dropbox/shared-notes']
 	let g:utl_cfg_hdl_scm_http_system = "silent !open -a Safari '%u'"
 " }}}
 
-" Setup arrows as shortcuts for moving fast through vimgrep/helpgrep-
-" style output (cnext/cprev/cnfile/cpfile).
+" Setup arrows as shortcuts for vimgrep/helpgrep-style c-results
 " {{{
 nmap <silent> <RIGHT>         :cnext<CR>
 nmap <silent> <RIGHT><RIGHT>  :cnfile<CR>
 nmap <silent> <LEFT>          :cprev<CR>
 nmap <silent> <LEFT><LEFT>    :cpfile<CR>
 " }}}
+
+" Ensure help files get the full window in their own tab
+" {{{
+augroup HelpInTabs
+    autocmd!
+    autocmd BufEnter *.txt  call HelpInNewTab()
+augroup END
+
+function! HelpInNewTab ()
+    if &buftype == 'help'
+        " Convert the help window to a tab...
+        execute "normal \<C-W>T"
+    endif
+endfunction
+" }}}
+
+" Adjust open/close delimiter hopping (%)
+" {{{
+set matchpairs+=<:>,=:;
+" }}}
+
