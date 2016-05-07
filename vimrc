@@ -21,18 +21,20 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " General Plugins {{{
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'vim-voom/VOoM'
-Plugin 'wincent/command-t'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 " }}}
@@ -231,6 +233,16 @@ let g:notes_directories = ['~/notes/home-notes', '~/Dropbox/shared-notes']
 	let g:utl_cfg_hdl_scm_http_system = "silent !open -a Safari '%u'"
 " }}}
 
+" NERD Tree Configuration
+" {{{
+silent! nmap <C-p> :NERDTreeToggle<CR>
+silent! map <F2> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
+let g:NERDTreeToggle="<F2>"
+let g:NERDTreeMapActivateNode="<F3>"
+let g:NERDTreeMapPreview="<F4>"
+" }}}
+
 " Setup arrows as shortcuts for vimgrep/helpgrep-style c-results
 " {{{
 nmap <silent> <RIGHT>         :cnext<CR>
@@ -252,6 +264,11 @@ function! HelpInNewTab ()
         execute "normal \<C-W>T"
     endif
 endfunction
+" }}}
+
+" CtrlP configuration: Scala/Java/Clojure
+" {{{
+set wildignore+=*/target/*
 " }}}
 
 " Adjust open/close delimiter hopping (%)
