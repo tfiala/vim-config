@@ -1,6 +1,10 @@
 #!/bin/bash
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# =========
+# VIM setup
+# =========
+
 # Backup and remove any existing .vimrc
 if [ -f "$HOME/.vimrc" ]; then
     cp "$HOME/.vimrc" "$HOME/.vimrc.bak"
@@ -37,9 +41,30 @@ fi
 # Install Vundle plugins
 vim +VundleInstall +qall
 
-#
-# Install tmux and the tmux plugin manager
-#
+# Make vimproc.vim
+VIMPROC_DIR="$HOME/.vim/bundle/vimproc.vim"
+if [ -d "$VIMPROC_DIR" ]; then
+    pushd "$VIMPROC_DIR"
+    make
+    popd
+fi
+
+# Haskell setup.
+VIM_DIR="$HOME/.vim"
+# - grab haskell.vim and cabal.vim
+git clone https://github.com/sdiehl/haskell-vim-proto /tmp/haskell-vim-proto
+if [ $? == 0 ]; then
+    mkdir -p "$VIM_DIR/syntax"
+    cp /tmp/haskell-vim-proto/vim/syntax/haskell.vim /tmp/haskell-vim-proto/vim/syntax/cabal.vim "$VIM_DIR/syntax/"
+
+    mkdir -p "$VIM_DIR/snippets"
+    cp /tmp/haskell-vim-proto/vim/snippets/haskell.snippets "$VIM_DIR/snippets/"
+fi
+rm -rf /tmp/haskell-vim-proto
+
+# ==========
+# tmux setup
+# ==========
 
 # Backup and remove any .tmux directory
 if [ -d "$HOME/.tmux" ]; then
