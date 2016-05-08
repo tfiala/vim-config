@@ -34,6 +34,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'vim-voom/VOoM'
@@ -47,6 +48,16 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'kovisoft/paredit'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" }}}
+
+" Haskell-related plugins {{{
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'eagletmt/neco-ghc'
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
+Plugin 'godlygeek/tabular'
+Plugin 'ervandew/supertab'
 " }}}
 
 " All of your Plugins must be added before the following line
@@ -69,6 +80,9 @@ filetype plugin indent on
 syntax on
 
 " various global behavioral settings
+set clipboard=unnamedplus,autoselect
+set cmdheight=1
+set completeopt=menuone,menu,longest
 set showcmd		" Show (partial) command in status line.
 set showmatch	" Show matching brackets.
 set ignorecase	" Do case insensitive matching
@@ -80,7 +94,14 @@ set mouse=a		" Enable mouse usage (all modes) in terminals
 set nowrap      " don't wrap lines
 set autoindent  " always turn on autoindenting
 set copyindent  " copy the previous indentation on autoindenting
+set history=1000
 set number      " always show line numbers
+set showmode
+set smartindent
+set smarttab
+set tw=80
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git
+set wildmenu
 
 " handle tabs as spaces
 set tabstop=4
@@ -183,6 +204,7 @@ au Syntax *.{clj,edn,lisp} RainbowParenthesesLoadBraces
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+map <Leader>s :SyntasticToggleMode<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
@@ -350,4 +372,40 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" }}}
+
+" Supertab  {{{
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+if has("gui_running")
+  imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+else " no gui
+  if has("unix")
+    inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
+  endif
+endif
+
+" Haskell-specific {{{
+let g:haskellmode_completion_ghc = 1
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" }}}
+" }}}
+
+" Tabularize settings {{{
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
+" }}}
+
+" Haskell settings {{{
+autocmd FileType haskell,cabal setlocal softtabstop=2 shiftwidth=2 
+set wildignore+=.cabal-sandbox
+let g:haskell_tabular = 1
+
+" ghc-mod settings {{{
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
+" }}}
 " }}}
