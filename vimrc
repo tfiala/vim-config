@@ -290,10 +290,20 @@ function! HelpInNewTab ()
 endfunction
 " }}}
 
-" CtrlP configuration: Scala/Java/Clojure
-" {{{
+" CtrlP configuration {{{
+" JVM-style build output {{{
 set wildignore+=*/target/*
 " }}}
+" Version control {{{
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+" Don't limit max number of files - mainly for LLDB with embedded LLVM tree
+let g:ctrlp_max_files = 0
+" }}}
+" LLDB ignore paths {{{
+set wildignore+=*/build/*
+" }}}
+" }}}
+
 
 " Adjust open/close delimiter hopping (%)
 " {{{
