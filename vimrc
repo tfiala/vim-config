@@ -30,6 +30,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mtth/scratch.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -99,7 +100,9 @@ set number      " always show line numbers
 set showmode
 set smartindent
 set smarttab
-set tw=80
+" This one drives me nuts, particularly in Python, where it is often
+" syntatically invalid.
+" set tw=80
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git
 set wildmenu
 
