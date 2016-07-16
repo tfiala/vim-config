@@ -422,3 +422,10 @@ map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
 " }}}
 " }}}
+
+" clang-related settings {{{
+map <C-K> :pyf /Users/tfiala/clang/latest/share/clang/clang-format.py<cr>
+imap <C-K> <c-o>:pyf /Users/tfiala/clang/latest/share/clang/clang-format.py<cr>
+let g:syntastic_cpp_checkers = [ 'clang_check', 'clang_tidy' ]
+let g:syntastic_cpp_clang_tidy_post_args = ""
+" }}}
