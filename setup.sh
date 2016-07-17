@@ -62,18 +62,6 @@ if [ $? == 0 ]; then
     # Ensure our plugin dir exists
     mkdir -p "${VIM_DIR}/plugin"
 
-    # grammarian
-    cp -r "${DCONWAY_GIT_DIR}/grammarian" "${VIM_DIR}"
-    cp "${DCONWAY_GIT_DIR}/plugin/grammarian.vim" "${VIM_DIR}/plugin/"
-    if [[ ! "$(which cpanm)" =~ "not found" ]]; then
-        # Ensure we have the grammarian perl mod installed
-        cpanm install Lingua::EN::Grammarian
-    else
-        echo "cpanm not on path, cannot verify if 'Lingua::EN::Grammarian' is installed"
-    fi
-    # fixup hardcoded user directory names in grammarian.vim
-    perl -p -i -e "s!/Users/damian/!${HOME}/!g" "${VIM_DIR}/plugin/grammarian.vim"
-
     # others
     cp "${DCONWAY_GIT_DIR}/plugin/yankmatches.vim" "${VIM_DIR}/plugin/"
 fi
