@@ -113,6 +113,14 @@ set smarttab    " insert tobs on start of a line according to shiftwidth, not ta
 
 set hlsearch    " highlight search term
 
+" Undo History {{{
+" Turn on persistent undo
+if has('persistent_undo')
+    set undofile
+    set undodir=$HOME/.VIM_UNDO_FILES
+endif
+" }}}
+
 " Insert-mode deletion: allow deleting more than we inserted.
 " Otherwise, we get classic vi behavior where we cannot
 " delete any more than we inserted since we started insert mode.
