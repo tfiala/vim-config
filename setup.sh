@@ -13,14 +13,15 @@ fi
 
 # Backup and remove any existing .vim directory
 if [ -d "$HOME/.vim" ]; then
-    mv -f "$HOME/.vim" "$HOME/.vim.bak/"
+    rm -rf "$HOME/.vim.bak"
+    mv -f "$HOME/.vim" "$HOME/.vim.bak"
 fi
 
 # Clone Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Copy has.vim, used by first-time run of vim to avoid loading
-# a not-yet-existant colorscheme.
+# a not-yet-existent colorscheme.
 mkdir -p "$HOME/.vim/autoload"
 cp -f "$SCRIPT_DIR/has.vim" "$HOME/.vim/autoload/"
 
@@ -49,18 +50,14 @@ if [ -d "$VIMPROC_DIR" ]; then
     popd
 fi
 
-# Haskell setup.
+# Copy some of Damian Conway's plugins.
 VIM_DIR="$HOME/.vim"
-# - grab haskell.vim and cabal.vim
-git clone https://github.com/sdiehl/haskell-vim-proto /tmp/haskell-vim-proto
+git clone https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup.git /tmp/dconway-vim
 if [ $? == 0 ]; then
-    mkdir -p "$VIM_DIR/syntax"
-    cp /tmp/haskell-vim-proto/vim/syntax/haskell.vim /tmp/haskell-vim-proto/vim/syntax/cabal.vim "$VIM_DIR/syntax/"
-
-    mkdir -p "$VIM_DIR/snippets"
-    cp /tmp/haskell-vim-proto/vim/snippets/haskell.snippets "$VIM_DIR/snippets/"
+    mkdir -p "$VIM_DIR/plugin"
+    cp /tmp/dconway-vim/plugin/yankmatches.vim "$VIM_DIR/plugin/"
 fi
-rm -rf /tmp/haskell-vim-proto
+rm -rf /tmp/dconway-vim
 
 # ==========
 # tmux setup

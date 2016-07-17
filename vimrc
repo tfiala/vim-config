@@ -51,15 +51,6 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
 
-" Haskell-related plugins {{{
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'eagletmt/neco-ghc'
-Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'garbas/vim-snipmate'
-Plugin 'godlygeek/tabular'
-" }}}
-
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -89,7 +80,6 @@ filetype plugin indent on
 syntax on
 
 " various global behavioral settings
-set clipboard=unnamedplus,autoselect
 set cmdheight=1
 set completeopt=menuone,menu,longest
 set showcmd		" Show (partial) command in status line.
@@ -319,31 +309,6 @@ set wildignore+=*/build/*
 " Adjust open/close delimiter hopping (%)
 " {{{
 set matchpairs+=<:>,=:;
-" }}}
-
-" Haskell-specific {{{
-let g:haskellmode_completion_ghc = 1
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-" }}}
-" }}}
-
-" Tabularize settings {{{
-vmap a= :Tabularize /=<CR>
-vmap a; :Tabularize /::<CR>
-vmap a- :Tabularize /-><CR>
-" }}}
-
-" Haskell settings {{{
-autocmd FileType haskell,cabal setlocal softtabstop=2 shiftwidth=2 
-set wildignore+=.cabal-sandbox
-let g:haskell_tabular = 1
-
-" ghc-mod settings {{{
-map <silent> tw :GhcModTypeInsert<CR>
-map <silent> ts :GhcModSplitFunCase<CR>
-map <silent> tq :GhcModType<CR>
-map <silent> te :GhcModTypeClear<CR>
-" }}}
 " }}}
 
 " clang-related settings {{{
