@@ -52,10 +52,30 @@ fi
 
 # Copy some of Damian Conway's plugins.
 VIM_DIR="$HOME/.vim"
-git clone https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup.git /tmp/dconway-vim
+DCONWAY_GIT_DIR=/tmp/dconway-vim
+if [ -e "${DCONWAY_GIT_DIR}" ]; then
+    rm -rf "${DCONWAY_GIT_DIR}"
+fi
+git clone https://github.com/thoughtstream/Damian-Conway-s-Vim-Setup.git "${DCONWAY_GIT_DIR}"
+
 if [ $? == 0 ]; then
-    mkdir -p "$VIM_DIR/plugin"
-    cp /tmp/dconway-vim/plugin/yankmatches.vim "$VIM_DIR/plugin/"
+    # Ensure our plugin dir exists
+    mkdir -p "${VIM_DIR}/plugin"
+
+    # grammarian
+    cp -r "${DCONWAY_GIT_DIR}/grammarian" "${VIM_DIR}"
+    cp "${DCONWAY_GIT_DIR}/plugin/grammarian.vim" "${VIM_DIR}/plugin/"
+    if [[ ! "$(which cpanm)" =~ "not found" ]]; then
+        # Ensure we have the grammarian perl mod installed
+        cpanm install Lingua::EN::Grammarian
+    else
+        echo "cpanm not on path, cannot verify if 'Lingua::EN::Grammarian' is installed"
+    fi
+    # fixup hardcoded user directory names in grammarian.vim
+    perl -p -i -e "s!/Users/damian/!${HOME}/!g" "${VIM_DIR}/plugin/grammarian.vim"
+
+    # others
+    cp "${DCONWAY_GIT_DIR}/plugin/yankmatches.vim" "${VIM_DIR}/plugin/"
 fi
 rm -rf /tmp/dconway-vim
 
@@ -65,6 +85,7 @@ rm -rf /tmp/dconway-vim
 
 # Backup and remove any .tmux directory
 if [ -d "$HOME/.tmux" ]; then
+    rm -rf "$HOME/.tmux" >/dev/null 2>&1
     mv -f "$HOME/.tmux" "$HOME/.tmux.bak/"
 fi
 
