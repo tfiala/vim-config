@@ -63,6 +63,7 @@ if [ $? == 0 ]; then
     mkdir -p "${VIM_DIR}/plugin"
 
     # plugins
+    cp "${DCONWAY_GIT_DIR}/plugin/foldsearches.vim" "${VIM_DIR}/plugin/"
     cp "${DCONWAY_GIT_DIR}/plugin/visualguide.vim" "${VIM_DIR}/plugin/"
     cp "${DCONWAY_GIT_DIR}/plugin/yankmatches.vim" "${VIM_DIR}/plugin/"
 fi

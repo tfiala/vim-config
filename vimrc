@@ -68,6 +68,10 @@ let mapleader=" "
 " mode.
 noremap / /\v
 
+" Fold parts that don't match the current search {{{
+nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
+" }}}
+
 " Unhighlight matches with backspace in normal mode
 nmap <silent> <BS> :nohlsearch<CR>
 
