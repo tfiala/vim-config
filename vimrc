@@ -68,8 +68,63 @@ let mapleader=" "
 " mode.
 noremap / /\v
 
-" Fold parts that don't match the current search {{{
+" Folding {{{
+" Fold parts that don't match the current search
 nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
+
+" Use syntax-directed folding.
+set foldmethod=syntax
+
+" Enable auto-open, auto close of folds when we enter and leave them.
+set foldopen=all
+set foldclose=all
+
+" Fold Detection/foldcolumn {{{
+" Put a guideline on the side to show fold level.
+function HandleFoldColumns()
+    "Attempt to move between folds, checking line numbers to see if it worked.
+    "If it did, there are folds.
+
+    function! HasFoldsInner()
+        let origline=line('.')
+        :norm zk
+        if origline==line('.')
+            :norm zj
+            if origline==line('.')
+                return 0
+            else
+                return 1
+            endif
+        else
+            return 1
+        endif
+        return 0
+    endfunction
+
+    let l:winview=winsaveview() "save window and cursor position
+    let foldsexist=HasFoldsInner()
+    if foldsexist
+        set foldcolumn=6
+    else
+        "Move to the end of the current fold and check again in case the
+        "cursor was on the sole fold in the file when we checked
+        if line('.')!=1
+            :norm [z
+            :norm k
+        else
+            :norm ]z
+            :norm j
+        endif
+        let foldsexist=HasFoldsInner()
+        if foldsexist
+            set foldcolumn=1
+        else
+            set foldcolumn=0
+        endif
+    end
+    call winrestview(l:winview) "restore window/cursor position
+endfunction
+au CursorHold,BufWinEnter ?* call HandleFoldColumns()
 " }}}
 
 " Unhighlight matches with backspace in normal mode

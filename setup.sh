@@ -1,5 +1,6 @@
 #!/bin/bash
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+VIM_DIR="$HOME/.vim"
 
 # =========
 # VIM setup
@@ -50,8 +51,12 @@ if [ -d "$VIMPROC_DIR" ]; then
     popd
 fi
 
+# Copy over our ftplugin files if we have any.
+if [ -d "${SCRIPT_DIR}/ftplugin" ]; then
+    cp -r "${SCRIPT_DIR}/ftplugin" "${VIM_DIR}"
+fi
+
 # Copy some of Damian Conway's plugins.
-VIM_DIR="$HOME/.vim"
 DCONWAY_GIT_DIR=/tmp/dconway-vim
 if [ -e "${DCONWAY_GIT_DIR}" ]; then
     rm -rf "${DCONWAY_GIT_DIR}"
