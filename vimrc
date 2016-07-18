@@ -29,6 +29,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'c9s/perlomni.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'mtth/scratch.vim'
@@ -155,6 +156,11 @@ if has#colorscheme('solarized')
     endif
     colorscheme solarized
 endif
+" }}}
+
+" 80-column warning {{{
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
 " }}}
 
 " always show status line

@@ -62,7 +62,8 @@ if [ $? == 0 ]; then
     # Ensure our plugin dir exists
     mkdir -p "${VIM_DIR}/plugin"
 
-    # others
+    # plugins
+    cp "${DCONWAY_GIT_DIR}/plugin/visualguide.vim" "${VIM_DIR}/plugin/"
     cp "${DCONWAY_GIT_DIR}/plugin/yankmatches.vim" "${VIM_DIR}/plugin/"
 fi
 rm -rf /tmp/dconway-vim
