@@ -70,15 +70,32 @@ let mapleader=" "
 noremap / /\v
 
 " Folding {{{
+
+" Function to enable fold "focus" mode.  When in focus mode,
+" syntax-oriented folding is used and folds are opened and
+" closed automatically.
+function FF_FocusFolds()
+    " Enable auto-open, auto close of folds when we enter and leave them.
+    setlocal foldopen=all
+    setlocal foldclose=all
+endfunction
+
+" Function to disable fold "focus" mode.  Shuts off
+" foldopen/foldclose, and opens all folds.
+function FF_UnfocusFolds()
+    setlocal foldopen="block,hor,mark,percent,quickfix,search,tag,undo"
+    setlocal foldclose=""
+    %foldopen!
+endfunction
+
+nmap <silent> <expr> zF FF_FocusFolds()
+nmap <silent> <expr> zf FF_UnfocusFolds()
+
 " Fold parts that don't match the current search
 nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
 
 " Use syntax-directed folding.
 set foldmethod=syntax
-
-" Enable auto-open, auto close of folds when we enter and leave them.
-set foldopen=all
-set foldclose=all
 
 " Fold Detection/foldcolumn {{{
 " Put a guideline on the side to show fold level.
@@ -391,3 +408,8 @@ imap <C-K> <c-o>:pyf /Users/tfiala/clang/latest/share/clang/clang-format.py<cr>
 let g:syntastic_cpp_checkers = [ 'clang_check', 'clang_tidy' ]
 let g:syntastic_cpp_clang_tidy_post_args = ""
 " }}}
+
+" Spell checking {{{
+set spell spelllang=en_us
+" }}}
+
