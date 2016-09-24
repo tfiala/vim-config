@@ -29,7 +29,6 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'c9s/perlomni.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'freitass/todo.txt-vim'
@@ -37,20 +36,25 @@ Plugin 'mtth/scratch.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'vim-voom/VOoM'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+
 " }}}
 
 " Clojure-related plugins {{{
 Plugin 'guns/vim-clojure-static'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'kovisoft/paredit'
+Plugin 'tpope/vim-salve'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+" I managed to accrue two types of Lisp-like paredit
+" support.  Turning off this one for now.
+" Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
 
 " All of your Plugins must be added before the following line
@@ -182,6 +186,17 @@ set smarttab
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git
 set wildmenu
 
+" bell settings {{{
+" The combination of the following two commands is used to shut off
+" the audible bell.  This is somehow important in my setup because
+" I get random beeps on startup when I load a file, and after hitting
+" Esc.
+" This turns on the visual bell and shuts off the beep.
+set visualbell
+" This then turns off the visual bell.
+set t_vb=
+" }}}
+
 " handle tabs as spaces
 set tabstop=4
 set shiftwidth=4
@@ -283,10 +298,10 @@ let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
 " Use rainbow parens for lispen {{{
-au VimEnter *.{clj,edn,lisp} RainbowParenthesesToggle
-au Syntax *.{clj,edn,lisp} RainbowParenthesesLoadRound
-au Syntax *.{clj,edn,lisp} RainbowParenthesesLoadSquare
-au Syntax *.{clj,edn,lisp} RainbowParenthesesLoadBraces
+au VimEnter *.{clj,cljs,edn,lisp} RainbowParenthesesToggle
+au Syntax *.{clj,cljs,edn,lisp} RainbowParenthesesLoadRound
+au Syntax *.{clj,cljs,edn,lisp} RainbowParenthesesLoadSquare
+au Syntax *.{clj,cljs,edn,lisp} RainbowParenthesesLoadBraces
 " }}}
 " }}}
 
@@ -309,34 +324,8 @@ let g:syntastic_objc_checkers = ['oclint', 'gcc']
 " Objective-C++ Setup {{{
 let g:syntastic_objcpp_checkers = ['oclint', 'gcc']
 " }}}
-" Perl Setup {{{
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
-" }}}
 " }}}
 
-" command-t setup {{{
-let g:CommandTFileScanner = 'git'
-" }}}
-
-" PerlTidy Setup {{{
-"define :Tidy command to run perltidy on visual selection || entire buffer"
-command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
-
-"run :Tidy on entire buffer and return cursor to (approximate) original position"
-fun DoTidy()
-    let l = line(".")
-    let c = col(".")
-    :Tidy
-    call cursor(l, c)
-endfun
-
-"shortcut for normal mode to run on entire buffer then return to current line"
-au Filetype perl nmap <F2> :call DoTidy()<CR>
-
-"shortcut for visual mode to run on the the current visual selection"
-au Filetype perl vmap <F2> :Tidy<CR>
-" }}}
 
 " vim-notes setup
 " {{{
