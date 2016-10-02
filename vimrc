@@ -7,6 +7,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" We want to use jk as <Esc>
+:imap jk <Esc>
+
 " Ensure we re-read the file if its in the buffer and has been modified
 " outside of vim.
 set autoread
