@@ -105,8 +105,13 @@ nmap <silent> <expr> zf FF_UnfocusFolds()
 " Fold parts that don't match the current search
 nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
 
-" Use syntax-directed folding.
+" auto-folding {{{
+" Use syntax-directed folding in general.
 set foldmethod=syntax
+
+" shell scripts tend to be mostly flat, do explicit marker-based foldink
+autocmd FileType sh,zsh setlocal foldmethod=marker
+" }}}
 
 " Fold Detection/foldcolumn {{{
 " Put a guideline on the side to show fold level.
