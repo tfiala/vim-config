@@ -60,6 +60,10 @@ Plugin 'tpope/vim-fireplace'
 " Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
 
+" Haskell-related plugins {{{
+Plugin 'neovimhaskell/haskell-vim'
+" }}}
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
