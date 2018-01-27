@@ -109,7 +109,7 @@ nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
 " Use syntax-directed folding in general.
 set foldmethod=syntax
 
-" shell scripts tend to be mostly flat, do explicit marker-based foldink
+" shell scripts tend to be mostly flat, do explicit marker-based folding
 autocmd FileType sh,zsh setlocal foldmethod=marker
 " }}}
 
@@ -159,6 +159,7 @@ function HandleFoldColumns()
     call winrestview(l:winview) "restore window/cursor position
 endfunction
 au CursorHold,BufWinEnter ?* call HandleFoldColumns()
+" }}}
 " }}}
 
 " Unhighlight matches with backspace in normal mode
