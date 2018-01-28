@@ -6,6 +6,9 @@ VIM_DIR="$HOME/.vim"
 VIM_DIR_BACKUP="${VIM_DIR}.bak"
 VIMRC="$HOME/.vimrc"
 VIMRC_BACKUP="${VIMRC}.bak"
+NVIM_DIR="$HOME/.config/nvim"
+NVIM_INIT="$NVIM_DIR/init.vim"
+NVIM_INIT_BACKUP="${NVIM_INIT}.bak"
 # }}}
 
 # .vimrc/.vim backup and wipe {{{
@@ -13,6 +16,12 @@ VIMRC_BACKUP="${VIMRC}.bak"
 if [ -f "$VIMRC" ]; then
     cp "$VIMRC" "$VIMRC_BACKUP"
     rm "$VIMRC"
+fi
+
+# Same for neovim init.vim
+if [ -f "$NVIM_INIT" ]; then
+    cp "$NVIM_INIT" "$NVIM_INIT_BACKUP"
+    rm "$NVIM_INIT"
 fi
 
 # Backup and remove any existing .vim directory
@@ -24,10 +33,14 @@ fi
 
 # vimrc/.vim creation and link {{{
 mkdir -p "$VIM_DIR"
+mkdir -p "$NVIM_DIR"
 
 # Create symbolic link from $HOME/.vimrc to the .vimrc in this dir.
-ln -s "$SCRIPT_DIR/vimrc" "$HOME/.vimrc"
+ln -s "$SCRIPT_DIR/vimrc" "$VIMRC"
 # }}}
+
+# Create similar link for neovim config
+ln -s "$SCRIPT_DIR/neovim-init.vim" "$NVIM_INIT"
 
 # first-time run colorscheme fix {{{
 # Copy has.vim, used by first-time run of vim to avoid loading
