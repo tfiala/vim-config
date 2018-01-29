@@ -64,6 +64,10 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'neovimhaskell/haskell-vim'
 " }}}
 
+" markdown-related plugins {{{
+Plugin 'junegunn/vim-xmark'
+" }}}
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -415,3 +419,7 @@ let g:syntastic_cpp_clang_tidy_post_args = ""
 set spell spelllang=en_us
 " }}}
 
+" markdown support {{{
+au! BufRead,BufNewFile *.markdown set filetype=markdown
+au! BufRead,BufNewFile *.md       set filetype=markdown
+" }}}
