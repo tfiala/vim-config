@@ -34,12 +34,14 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'freitass/todo.txt-vim'
+Plugin 'dbeniamine/todo.txt-vim'
+Plugin 'elixir-editors/vim-elixir'
 Plugin 'mtth/scratch.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-erlang/vim-dialyzer'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'vim-voom/VOoM'
 Plugin 'xolox/vim-misc'
@@ -49,15 +51,13 @@ Plugin 'xolox/vim-notes'
 
 " Clojure-related plugins {{{
 Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-sexp'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'kovisoft/paredit'
-Plugin 'tpope/vim-salve'
-Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fireplace'
-" I managed to accrue two types of Lisp-like paredit
-" support.  Turning off this one for now.
-" Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-salve'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
 
 " Haskell-related plugins {{{
