@@ -60,6 +60,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'venantius/vim-cljfmt'
 " }}}
 
 " Haskell-related plugins {{{
@@ -78,6 +79,11 @@ filetype plugin indent on
 " Leader Setup {{{
 " Remap the leader key to the space bar
 let mapleader=" "
+" }}}
+
+" Clipboard Setup {{{
+" Use the macOS clipboard by default with yank and paste
+set clipboard=unnamed
 " }}}
 
 " Search: remap to use normal regular expression content.
