@@ -61,6 +61,7 @@ Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'venantius/vim-cljfmt'
+Plugin 'venantius/vim-eastwood'
 " }}}
 
 " Haskell-related plugins {{{
@@ -349,6 +350,8 @@ let g:syntastic_objc_checkers = ['oclint', 'gcc']
 " Objective-C++ Setup {{{
 let g:syntastic_objcpp_checkers = ['oclint', 'gcc']
 " }}}
+" Clojure Setup {{{
+let g:syntastic_clojure_checkers = ['eastwood']
 " }}}
 
 
