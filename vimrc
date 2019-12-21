@@ -33,9 +33,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'dbeniamine/todo.txt-vim'
-Plugin 'elixir-editors/vim-elixir'
+Plugin 'junegunn/vim-xmark'
 Plugin 'mtth/scratch.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
@@ -43,7 +42,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-erlang/vim-dialyzer'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'vim-voom/VOoM'
 Plugin 'xolox/vim-misc'
@@ -62,14 +60,6 @@ Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'venantius/vim-cljfmt'
 Plugin 'venantius/vim-eastwood'
-" }}}
-
-" Haskell-related plugins {{{
-Plugin 'neovimhaskell/haskell-vim'
-" }}}
-
-" markdown-related plugins {{{
-Plugin 'junegunn/vim-xmark'
 " }}}
 
 " All of your Plugins must be added before the following line
